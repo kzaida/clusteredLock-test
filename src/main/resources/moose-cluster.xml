@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<infinispan xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="urn:infinispan:config:9.4 http://infinispan.org/schemas/infinispan-config-9.4.xsd"
+            xmlns="urn:infinispan:config:9.4">
+    <jgroups>
+        <stack-file name="tcpStack" path="${infinispan.configClusterFilePath:moose-jgroups-tcp.xml}"/>
+    </jgroups>
+    <cache-container default-cache="moose-data" statistics="${enable.stats:false}">
+        <transport stack="tcpStack" cluster="mooseCluster"/>
+        <replicated-cache
+                statistics-available="${enable.stats:false}"
+                name="moose-data"
+                statistics="${enable.stats:false}">
+            <locking concurrency-level="1000" acquire-timeout="5000"/>
+            <transaction mode="NON_XA" locking="PESSIMISTIC"/>
+        </replicated-cache>
+    </cache-container>
+</infinispan>
+
