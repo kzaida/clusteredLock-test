@@ -6,15 +6,22 @@
     <groupId>com.orange.moose</groupId>
     <version>0.0.16-SNAPSHOT</version>
     <modelVersion>4.0.0</modelVersion>
-
     <artifactId>test-clusteredlock-java</artifactId>
 
     <properties>
+        <java.version>1.8</java.version>
         <logback.version>1.2.3</logback.version>
         <slf4j.version>1.7.25</slf4j.version>
         <infinispan.version>9.4.4.Final</infinispan.version>
     </properties>
+
     <dependencies>
+
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.6</version>
+        </dependency>
 
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -52,5 +59,19 @@
         </dependency>
 
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.0</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
